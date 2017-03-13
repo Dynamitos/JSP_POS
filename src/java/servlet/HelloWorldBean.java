@@ -11,5 +11,33 @@ package servlet;
  */
 public class HelloWorldBean
 {
+    private String capital;
+    private String htmlCapital;
+
+    public HelloWorldBean()
+    {
+        
+    }
+
+    public void setCapital(String capital)
+    {
+        this.capital = capital;
+    }
+
+    public void setHtmlCapital(String htmlCapital)
+    {
+        this.htmlCapital = htmlCapital;
+    }
+    
+    public String getCapital()
+    {
+        return capital;
+    }
+
+    public String getHtmlCapital()
+    {
+        return htmlCapital;
+    }
+    
     
 }
