@@ -39,22 +39,26 @@ public class helloWorldServlet extends HttpServlet
         try (PrintWriter out = response.getWriter())
         {
             String col = request.getParameter("color");
-            if(ServletUtil.isEmpty(col))
+            if (ServletUtil.isEmpty(col))
             {
                 String parameterUri = ViewEnum.ERROR.getView() + "?message=Farbe%20Eingeben";
-                
-                ServletUtil.forward(parameterUri, request, response);               
+
+                ServletUtil.forward(parameterUri, request, response);
             }
-            
+
             HelloWorldBean bean = new HelloWorldBean("Hello World");
-            
+
             int size = 12;
             bean.setHtmlCapital(HTMLFormatter.formatText(bean.getCapital(), size, col));
-        }
-        
-        catch(Exception e)
-        {
+
+            request.setAttribute("helloWorldBean", bean);
             
+            ServletUtil.forward(ViewEnum.RESULT.getView(), request, response);
+        }
+
+        catch (Exception e)
+        {
+
         }
     }
 
@@ -71,8 +75,8 @@ public class helloWorldServlet extends HttpServlet
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException
     {
-            processRequest(request, response);
-        
+        processRequest(request, response);
+
     }
 
     /**
