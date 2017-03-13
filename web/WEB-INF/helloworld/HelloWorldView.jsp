@@ -13,5 +13,6 @@
     </head>
     <body>
         <h1>Hello World! Result View!</h1>
+        ${servlet.HelloWorldBean.htmlCapital}
     </body>
 </html>

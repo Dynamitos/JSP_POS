@@ -19,7 +19,7 @@ public class HelloWorldBean
         
     }
 
-    public HelloWorldBean(String text)
+    public HelloWorldBean(String capital)
     {
         this.capital = capital;
     }
