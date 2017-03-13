@@ -19,6 +19,11 @@ public class HelloWorldBean
         
     }
 
+    public HelloWorldBean(String text)
+    {
+        this.capital = capital;
+    }
+
     public void setCapital(String capital)
     {
         this.capital = capital;
