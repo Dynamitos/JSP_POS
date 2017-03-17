@@ -1,48 +1,37 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package servlet;
 
 /**
  *
- * @author Sabrina
+ * @author Michaela
  */
-public class HelloWorldBean
-{
+public class HelloWorldBean {
     private String capital;
+    //HTML-Formater
     private String htmlCapital;
 
-    public HelloWorldBean()
-    {
-        
+    public HelloWorldBean() {
     }
 
-    public HelloWorldBean(String capital)
-    {
-        this.capital = capital;
-    }
-
-    public void setCapital(String capital)
-    {
-        this.capital = capital;
-    }
-
-    public void setHtmlCapital(String htmlCapital)
-    {
-        this.htmlCapital = htmlCapital;
-    }
-    
-    public String getCapital()
-    {
+    public String getCapital() {
         return capital;
     }
 
-    public String getHtmlCapital()
-    {
+    public String getHtmlCapital() {
         return htmlCapital;
     }
+
+    public void setCapital(String capital) {
+        this.capital = capital;
+    }
+
+    public void setHtmlCapital(String htmlCapital) {
+        this.htmlCapital = htmlCapital;
+    }
     
+    //Other
+
+    public HelloWorldBean(String capital) {
+        this.capital = capital;
+    }
     
 }
