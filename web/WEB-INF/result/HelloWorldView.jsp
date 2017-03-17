@@ -1,7 +1,7 @@
 <%-- 
-    Document   : HelloWorldView
-    Created on : 13.03.2017, 14:36:53
-    Author     : Sabrina
+    Document   : helloWorldView
+    Created on : 13.03.2017, 14:37:05
+    Author     : Michaela
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -12,7 +12,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World! Result View!</h1>
-        ${servlet.HelloWorldBean.htmlCapital}
+        <h1>Hello World Result View!</h1>
+        ${helloWorldBean.htmlCapital}
     </body>
 </html>
