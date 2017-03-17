@@ -3,26 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package servlet;
+package helloworld;
 
+import resource.ViewResourceEnum;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import resource.ViewEnum;
-import utility.HTMLFormatter;
+import utility.HtmlFormatter;
 import utility.ServletUtil;
 
 /**
  *
- * @author Lukas Kollmann
+ * @author Michaela
  */
-public class helloWorldServlet extends HttpServlet
-{
+@WebServlet(name="HelloWoldServlet", urlPatterns="/HelloWorld")
+public class HelloWorldServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,32 +33,26 @@ public class helloWorldServlet extends HttpServlet
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-    {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter())
+            throws ServletException, IOException {
+        //Eingabe plausiprüfung
+        String color = request.getParameter("color");
+        
+        if(ServletUtil.isEmpty(color))
         {
-            String col = request.getParameter("color");
-            if (ServletUtil.isEmpty(col))
-            {
-                String parameterUri = ViewEnum.ERROR.getView() + "?message=Farbe%20Eingeben";
-
-                ServletUtil.forward(parameterUri, request, response);
-            }
-
-            HelloWorldBean bean = new HelloWorldBean("Hello World");
-
-            int size = 12;
-            bean.setHtmlCapital(HTMLFormatter.formatText(bean.getCapital(), size, col));
-
-            request.setAttribute("helloWorldBean", bean);
-            
-            ServletUtil.forward(ViewEnum.RESULT.getView(), request, response);
+            String parameterUri = ViewResourceEnum.ERROR.getPath() + "?messagee=Farbe eingeben";
+            ServletUtil.forward(parameterUri, request, response);
         }
-
-        catch (Exception e)
-        {
-
-        }
+        //Bean-Daten Objekt vorbereiten
+        HelloWorldBean bean = new HelloWorldBean("Hello World");
+        int size = 12;
+        //HTML Format
+        bean.setHtmlCapital(HtmlFormatter.formatText(bean.getCapital(),size, color));
+        
+        //Parameter Bean in den Scope legen
+        request.setAttribute("helloWorldBean", bean);
+        
+        //Ausgabe auf der View => Umleiten auf JSP View Result
+        ServletUtil.forward(ViewResourceEnum.RESULT.getPath(), request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -73,10 +66,8 @@ public class helloWorldServlet extends HttpServlet
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException
-    {
+            throws ServletException, IOException {
         processRequest(request, response);
-
     }
 
     /**
@@ -89,16 +80,8 @@ public class helloWorldServlet extends HttpServlet
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException
-    {
-        try
-        {
-            processRequest(request, response);
-        }
-        catch (Exception ex)
-        {
-            Logger.getLogger(helloWorldServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            throws ServletException, IOException {
+        processRequest(request, response);
     }
 
     /**
@@ -107,8 +90,7 @@ public class helloWorldServlet extends HttpServlet
      * @return a String containing servlet description
      */
     @Override
-    public String getServletInfo()
-    {
+    public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
 
