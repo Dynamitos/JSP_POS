@@ -10,8 +10,8 @@ package resource;
  * @author Michaela
  */
 public enum ViewResourceEnum {
-  START("helloworld/helloworldstartview.jsp"),
-  RESULT("/WEB-INF/helloworld/helloWorldView.jsp"),
+  START("view/helloworldstartview.jsp"),
+  RESULT("/WEB-INF/result/helloWorldView.jsp"),
   ERROR("/WEB-INF/error/errorView.jsp");
   
   private String path;
