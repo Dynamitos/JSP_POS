@@ -1,6 +1,6 @@
 <%-- 
-    Document   : helloWorldView
-    Created on : 13-Mar-2017, 14:36:42
+    Document   : exceptionView
+    Created on : 17-Mar-2017, 09:13:43
     Author     : Juergen
 --%>
 
@@ -9,10 +9,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Exception View</title>
     </head>
     <body>
-        <h1>Hello World result view!</h1>
-        ${helloWorldBean.htmlCapital}
+        <h1>Hello World!</h1>
+        <!--todo: Exception Information als EL anzeigen! -->
     </body>
 </html>

@@ -1,28 +1,22 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package resource;
 
-/**
- *
- * @author Michaela
- */
 public enum ViewResourceEnum {
-  START("view/helloworldstartview.jsp"),
-  RESULT("/WEB-INF/result/helloWorldView.jsp"),
-  ERROR("/WEB-INF/error/errorView.jsp");
-  
-  private String path;
-  
-  private ViewResourceEnum(String path)
-  {
-    this.path = path;
-  }
-  
-  public String getPath()
-  {
-     return path;
-  }
+    START("/view/helloWorldStartView.jsp"),
+    RESULT("/WEB-INF/result/helloWorldView.jsp"),
+    ERROR("/WEB-INF/error/errorView.jsp"),
+    EXCEPTION("/WEB-INF/error/exceptionView.jsp"),
+    FORM_HOME("/WEB-INF/includes/formGoHome.jsp");
+    
+    
+    private String view;
+
+    private ViewResourceEnum(String view) {
+        this.view = view;
+    }
+
+    public String getView() {
+        return view;
+    }
+    
+    
 }

@@ -1,6 +1,6 @@
 <%-- 
-    Document   : helloWorldView
-    Created on : 13-Mar-2017, 14:36:42
+    Document   : errorView
+    Created on : 17-Mar-2017, 09:14:22
     Author     : Juergen
 --%>
 
@@ -9,10 +9,11 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Error View</title>
     </head>
     <body>
-        <h1>Hello World result view!</h1>
-        ${helloWorldBean.htmlCapital}
+        <h1>Hello World!</h1>
+        Message: ${param.message}
+        <!--todo: include FormGoHome -->
     </body>
 </html>
