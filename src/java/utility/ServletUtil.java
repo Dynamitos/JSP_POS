@@ -9,6 +9,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import resource.ServletResourceEnum;
 import resource.ViewResourceEnum;
 
 /**
@@ -53,9 +54,12 @@ public class ServletUtil
                 forward(errorUri, request, response);
                 break;
             case 1:
+                //Forward in ErroHandlerServlet
+                String servlet = ServletResourceEnum.ERRORHANDLER.getUrlPattern();
+                forward(servlet, request, response);
                 break;
             case 2:
-                break;
+                throw new IllegalArgumentException(msg);
         }
     }
 }

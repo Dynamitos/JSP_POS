@@ -9,8 +9,12 @@ import javax.servlet.http.HttpServletResponse;
 import resource.ViewResourceEnum;
 import utility.ServletUtil;
 
-@WebServlet(name = "ErrorHandlerServlet", urlPatterns = {"/ErrorHandler"})
-public class ErrorHandlerServlet extends HttpServlet {
+@WebServlet(name = "ErrorHandlerServlet", urlPatterns =
+{
+    "/ErrorHandler"
+})
+public class ErrorHandlerServlet extends HttpServlet
+{
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -23,43 +27,47 @@ public class ErrorHandlerServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request,
             HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException
+    {
 
         // Analyze the servlet exception
-        Throwable throwable = (Throwable) request.getAttribute
-                                    ("javax.servlet.error.exception");
-        Integer statusCode = (Integer) request.getAttribute 
-                                        ("javax.servlet.error.status_code");
+        Throwable throwable = (Throwable) request.getAttribute("javax.servlet.error.exception");
+        Integer statusCode = (Integer) request.getAttribute("javax.servlet.error.status_code");
 
-        String errorMsg = (String) request.getAttribute
-                                        ("javax.servlet.error.message");
+        String errorMsg = (String) request.getAttribute("javax.servlet.error.message");
 
-        String requestUri = (String) request.getAttribute
-                                        ("javax.servlet.error.request_uri");
-        if (requestUri == null) {
+        String requestUri = (String) request.getAttribute("javax.servlet.error.request_uri");
+        if (requestUri == null)
+        {
             requestUri = "Unknown";
         }
-       
-        String paramUriPath = ViewResourceEnum.ERROR.getView() + 
-                "?message="+errorMsg;  
-        
-        if (throwable == null && statusCode == null) {
-            paramUriPath = ViewResourceEnum.ERROR.getView() + 
-                "?message="+errorMsg;             
-         // error handling
-        } else if (throwable != null && statusCode != null)
+
+        String paramUriPath = ViewResourceEnum.ERROR.getView()
+                + "?message=" + errorMsg;
+
+        if (throwable == null && statusCode == null)
         {
-            paramUriPath = ViewResourceEnum.EXCEPTION.getView() + 
-                "?message="+errorMsg+";status="+statusCode;             
-        } else if (statusCode != null) {
-            paramUriPath = ViewResourceEnum.ERROR.getView() + 
-                "?message="+errorMsg+";status="+statusCode;        
-        } else {
-            paramUriPath = ViewResourceEnum.EXCEPTION.getView() + 
-                "?message="+errorMsg+";status="+statusCode;        
+            paramUriPath = ViewResourceEnum.ERROR.getView()
+                    + "?message=" + errorMsg;
+            // error handling
         }
-        
-        ServletUtil.forward(paramUriPath, request, response);        
+        else if (throwable != null && statusCode != null)
+        {
+            paramUriPath = ViewResourceEnum.EXCEPTION.getView()
+                    + "?message=" + errorMsg + ";status=" + statusCode;
+        }
+        else if (statusCode != null)
+        {
+            paramUriPath = ViewResourceEnum.ERROR.getView()
+                    + "?message=" + errorMsg + ";status=" + statusCode;
+        }
+        else
+        {
+            paramUriPath = ViewResourceEnum.EXCEPTION.getView()
+                    + "?message=" + errorMsg + ";status=" + statusCode;
+        }
+
+        ServletUtil.forward(paramUriPath, request, response);
     }
 
 // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -73,7 +81,8 @@ public class ErrorHandlerServlet extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException
+    {
         processRequest(request, response);
     }
 
@@ -87,7 +96,8 @@ public class ErrorHandlerServlet extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException
+    {
         processRequest(request, response);
     }
 
@@ -97,7 +107,8 @@ public class ErrorHandlerServlet extends HttpServlet {
      * @return a String containing servlet description
      */
     @Override
-    public String getServletInfo() {
+    public String getServletInfo()
+    {
         return "Short description";
     }// </editor-fold>
 
