@@ -15,21 +15,27 @@ import resource.ViewResourceEnum;
  *
  * @author Juergen
  */
-public class ServletUtil {
+public class ServletUtil
+{
 
-    public static void forward(String uri, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public static void forward(String uri, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
         request.getRequestDispatcher(uri).forward(request, response);
     }
 
-    public static boolean isEmpty(String value) {
+    public static boolean isEmpty(String value)
+    {
         return (value == null || value.isEmpty());
     }
 
-    public static String checkRequestCommando(HttpServletRequest request, String... names) {
-        for (String name : names) {
+    public static String checkRequestCommando(HttpServletRequest request, String... names)
+    {
+        for (String name : names)
+        {
             String value = request.getParameter(name);
             //Wenn ein Wet (Value) für den Parameter (key) vorhanden ist, dann ist dieser Button (Form-Submit) gedrückt worden
-            if (!isEmpty(value)) {
+            if (!isEmpty(value))
+            {
                 return name.toUpperCase();
             }
         }
@@ -37,15 +43,19 @@ public class ServletUtil {
 
     }
 
-    public static void forwardError(HttpServletRequest request, HttpServletResponse response, String msg) throws Exception{
+    public static void forwardError(HttpServletRequest request, HttpServletResponse response, String msg) throws Exception
+    {
         int mode = 0;
-        switch(mode)
+        switch (mode)
         {
-            case 0: String errorUri = ViewResourceEnum.ERROR.getView() + "?messsage="+ msg;
+            case 0:
+                String errorUri = ViewResourceEnum.ERROR.getView() + "?message=" + msg;
                 forward(errorUri, request, response);
                 break;
-            case 1: break;
-            case 2: break;
+            case 1:
+                break;
+            case 2:
+                break;
         }
     }
 }
