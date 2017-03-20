@@ -42,29 +42,24 @@ public class ErrorHandlerServlet extends HttpServlet
             requestUri = "Unknown";
         }
 
-        String paramUriPath = ViewResourceEnum.ERROR.getView()
-                + "?message=" + errorMsg;
+        String paramUriPath = ViewResourceEnum.ERROR.getView() + "?message=" + errorMsg;
 
         if (throwable == null && statusCode == null)
         {
-            paramUriPath = ViewResourceEnum.ERROR.getView()
-                    + "?message=" + errorMsg;
+            paramUriPath = ViewResourceEnum.ERROR.getView() + "?message=" + errorMsg;
             // error handling
         }
         else if (throwable != null && statusCode != null)
         {
-            paramUriPath = ViewResourceEnum.EXCEPTION.getView()
-                    + "?message=" + errorMsg + ";status=" + statusCode;
+            paramUriPath = ViewResourceEnum.EXCEPTION.getView() + "?message=" + errorMsg + ";status=" + statusCode;
         }
         else if (statusCode != null)
         {
-            paramUriPath = ViewResourceEnum.ERROR.getView()
-                    + "?message=" + errorMsg + ";status=" + statusCode;
+            paramUriPath = ViewResourceEnum.ERROR.getView()+ "?message=" + errorMsg + ";status=" + statusCode;
         }
         else
         {
-            paramUriPath = ViewResourceEnum.EXCEPTION.getView()
-                    + "?message=" + errorMsg + ";status=" + statusCode;
+            paramUriPath = ViewResourceEnum.EXCEPTION.getView() + "?message=" + errorMsg + ";status=" + statusCode;
         }
 
         ServletUtil.forward(paramUriPath, request, response);
