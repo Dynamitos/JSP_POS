@@ -4,6 +4,7 @@
     Author     : Juergen
 --%>
 
+<%@page import="resource.ViewResourceEnum"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -14,5 +15,7 @@
     <body>
         <h1>Hello World result view!</h1>
         ${helloWorldBean.htmlCapital}
+        <br/>
+        <jsp:include page="<%=ViewResourceEnum.FORM_HOME.getView()%>"/>
     </body>
 </html>

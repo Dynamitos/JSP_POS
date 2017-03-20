@@ -8,6 +8,6 @@
 
 <%@page import="resource.ViewResourceEnum"%>
 
-<form action="${pageContext.request.contextPath}<%=ViewResourceEnum.START.getView()%>">
-    
+<form action="${pageContext.request.contextPath}<%=ViewResourceEnum.START.getView()%>" method="GET">
+    <input type="submit" value="Home"/>
 </form>
